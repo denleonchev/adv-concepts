@@ -11,7 +11,7 @@ import { INTERVAL_KEY } from '../decorators/interval.decorator';
 export class IntervalScheduler
   implements OnApplicationBootstrap, OnApplicationShutdown
 {
-  private readonly intervals: NodeJS.Timer[] = [];
+  private readonly intervals: NodeJS.Timeout[] = [];
 
   constructor(
     private readonly discoveryService: DiscoveryService,
