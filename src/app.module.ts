@@ -8,6 +8,12 @@ import { FibonacciModule } from './fibonacci/fibonacci.module';
 import { TagsModule } from './tags/tags.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { PaymentsModule } from './payments/payments.module';
+import { DataSourceModule } from './data-source/data-source.module';
+import { UsersModule } from './users/users.module';
+import { ContextIdFactory } from '@nestjs/core';
+import { AggregateByTenantContextIdStrategy } from './core/aggregate-by-tenant.strategy';
+
+ContextIdFactory.apply(new AggregateByTenantContextIdStrategy());
 
 @Module({
   imports: [
@@ -18,6 +24,8 @@ import { PaymentsModule } from './payments/payments.module';
     TagsModule,
     EventEmitterModule.forRoot(),
     PaymentsModule,
+    DataSourceModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
